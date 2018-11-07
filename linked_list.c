@@ -62,13 +62,8 @@ void print_item(node* current){
 
 /* Function used to delete a specific item*/
 void delete(int val){
-<<<<<<< HEAD
 	node* current = NULL;
 	node* temp = NULL;
-=======
-	node* current = malloc(sizeof(node));
-	node* temp = malloc(sizeof(node));
->>>>>>> master
 
 	if(head->val==val){
 		temp = head;
@@ -90,7 +85,6 @@ void delete(int val){
 		}
 	}
 }
-<<<<<<< HEAD
 
 /*Functions used to sort the list.*/
 
@@ -126,8 +120,6 @@ void split(node* source,node** left,node** right){
 	}
 	node* first_pass = source;
 	node* second_pass = source->next;
-	printf("%d",first_pass->val);
-	printf("%d",second_pass->val);
 
 	while(first_pass != NULL){
 		first_pass = first_pass->next;
@@ -138,9 +130,7 @@ void split(node* source,node** left,node** right){
 	}
 
 	*left = source;
-	*right = second_pass->next;
-	printf("%d",*(left)->val);
-	printf("%d",*(right)->val);
+	*right = second_pass;
 	second_pass->next = NULL;
 }
 
@@ -154,7 +144,8 @@ void merge_sort(node** head){
 	node* b = NULL;
 
 	split(*head,&a,&b);
-
+	printf("%d\n",a->val);
+	printf("%d\n",b->val);
 	//merge_sort(&a);
 	//merge_sort(&b);
 
@@ -165,6 +156,30 @@ void sort(){
 	merge_sort(&head);
 }
 
-=======
->>>>>>> master
+/*Function used to delete the last entry in the list*/
+void pop(){
+	node* current = head;
+	node* temp = NULL;
 
+	if(head == NULL){
+		return;
+	}
+	if(current->next == NULL){
+		temp = head;
+		head = NULL;
+		free(temp);
+	}
+	while(current->next->next != NULL){
+		current = current->next;
+	}
+	temp = current->next;
+	current->next = NULL;
+	free(temp);
+
+}
+/*Function used to flush the list*/
+void flush(){
+	while(head != NULL){
+		pop();
+	}
+}
