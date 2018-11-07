@@ -62,5 +62,27 @@ void print_item(node* current){
 
 /* Function used to delete a specific item*/
 void delete(int val){
+	node* current = malloc(sizeof(node));
+	node* temp = malloc(sizeof(node));
 
+	if(head->val==val){
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+	else{
+		current = head;
+		while((current->next->next!=NULL)&&(current->next->val!=val)){
+			current = current->next;
+		}
+		if((current->next->next==NULL)&&(current->next->val!=val)){
+			printf("The value was not found in the list.\n");
+		}
+		else{
+			temp = current->next;
+			current->next = temp->next;
+			free(temp);
+		}
+	}
 }
+
