@@ -62,8 +62,13 @@ void print_item(node* current){
 
 /* Function used to delete a specific item*/
 void delete(int val){
+<<<<<<< HEAD
 	node* current = NULL;
 	node* temp = NULL;
+=======
+	node* current = malloc(sizeof(node));
+	node* temp = malloc(sizeof(node));
+>>>>>>> master
 
 	if(head->val==val){
 		temp = head;
@@ -85,6 +90,7 @@ void delete(int val){
 		}
 	}
 }
+<<<<<<< HEAD
 
 /*Functions used to sort the list.*/
 
@@ -159,4 +165,6 @@ void sort(){
 	merge_sort(&head);
 }
 
+=======
+>>>>>>> master
 
