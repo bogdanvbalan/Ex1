@@ -6,6 +6,9 @@ int main(){
 	add(2);
 	add(5);
 	add(7);
-	head->print_list();
+	print();
+	add(11);
+	add(12);
+	print();
 	return 0;
 }

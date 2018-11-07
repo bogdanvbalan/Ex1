@@ -1,14 +1,10 @@
 // FUNCTIONS 
 void add(int val);
-
+void print();
+void delete(int val);
 //TYPES
-typedef void (*print_ptr)();
+struct node;
+typedef void (*print_ptr)(struct node*);
 
-typedef struct node{
-  struct node * next;
-  int val;
-  print_ptr print_list;
-} Node;
 
 //VARIABLES
-extern Node* head;
