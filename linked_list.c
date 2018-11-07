@@ -62,8 +62,8 @@ void print_item(node* current){
 
 /* Function used to delete a specific item*/
 void delete(int val){
-	node* current = malloc(sizeof(node));
-	node* temp = malloc(sizeof(node));
+	node* current = NULL;
+	node* temp = NULL;
 
 	if(head->val==val){
 		temp = head;
@@ -85,4 +85,78 @@ void delete(int val){
 		}
 	}
 }
+
+/*Functions used to sort the list.*/
+
+/* The function merges the two lists that are sorted.*/
+node* merge_lists(node* list_a,node* list_b){
+	node* result = NULL;
+	if(list_a == NULL){  // the cases when one of the list is empty
+		return list_b;
+	}
+	if(list_b == NULL){
+		return list_a;
+	}
+
+	if(list_a->val <= list_b->val){
+		result = list_a;
+		result->next = merge_lists(list_a->next,list_b);
+	}
+	else{
+		result = list_b;
+		result->next = merge_lists(list_a,list_b->next);
+	}
+	return result;
+
+}
+
+/*Function used to split the nodes of a given list in two different lists*/
+void split(node* source,node** left,node** right){
+	if((source == NULL) || (source->next == NULL) ){
+		printf("Reached this.");
+		*left = source;
+		*right = NULL;
+		return;
+	}
+	node* first_pass = source;
+	node* second_pass = source->next;
+	printf("%d",first_pass->val);
+	printf("%d",second_pass->val);
+
+	while(first_pass != NULL){
+		first_pass = first_pass->next;
+		if(first_pass != NULL){
+			second_pass = second_pass->next;
+			first_pass = first_pass->next;
+		}
+	}
+
+	*left = source;
+	*right = second_pass->next;
+	printf("%d",*(left)->val);
+	printf("%d",*(right)->val);
+	second_pass->next = NULL;
+}
+
+/*Sort the given list*/
+void merge_sort(node** head){
+	if(*head == NULL || (*head)->next == NULL){
+		return;
+	}
+
+	node* a = NULL;
+	node* b = NULL;
+
+	split(*head,&a,&b);
+
+	//merge_sort(&a);
+	//merge_sort(&b);
+
+	//*head = merge_lists(a,b);
+}
+
+void sort(){
+	merge_sort(&head);
+}
+
 
