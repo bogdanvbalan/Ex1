@@ -74,6 +74,9 @@ void delete(int val){
 		head = head->next;
 		free(temp);
 	}
+	else if((head->val != val) && (head->next == NULL)){   //Mange the case when the value is not in the list and 
+		printf("The value was not found in the list.\n");  // the list has only 1 node
+	}
 	else{
 		current = head;
 		while((current->next->next!=NULL)&&(current->next->val!=val)){
