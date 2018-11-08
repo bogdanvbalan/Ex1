@@ -10,7 +10,7 @@ int main(){
 	delete(6);
 	add(23);
 	print();
-	flush();
+	sort();
 	print();
 	return 0;
 }
