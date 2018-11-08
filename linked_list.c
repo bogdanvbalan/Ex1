@@ -133,11 +133,11 @@ void pop(){
 	temp = current->next;
 	current->next = NULL;
 	free(temp);
-
 }
 /*Function used to flush the list*/
 void flush(){
-	while(head != NULL){
+	while(head->next != NULL){
 		pop();
 	}
+	free(head);
 }
